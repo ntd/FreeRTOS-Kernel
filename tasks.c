@@ -2391,14 +2391,7 @@ STATIC void prvInitialiseNewTask( TaskFunction_t pxTaskCode,
             /* Ticks to the next wake time */
             xTicksToWait = xTimeIncrement - ( xTicksElapsed - xTicksIncrements );
 
-            if( xTicksToWait > 0 )
-            {
-                prvAddCurrentTaskToDelayedList( xTicksToWait, pdFALSE );
-            }
-            else
-            {
-                mtCOVERAGE_TEST_MARKER();
-            }
+            prvAddCurrentTaskToDelayedList( xTicksToWait, pdFALSE );
         }
 
         /* Force a reschedule if xTaskResumeAll has not already done so, we may
